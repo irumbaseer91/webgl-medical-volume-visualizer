@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <div id="visualizerContainer"></div>
+    <script>
+        function loadVisualizer() {
+            fetch('visualizer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('visualizerContainer').innerHTML = data;
+                });
+        }
+
+        // Call the function to load the visualizer
+        loadVisualizer();
+    </script>
+    
+</body>
+
+<!-- include the parser library -->
+<script src="js/lib/pako.js"></script>
+<script src="js/lib/gl-matrix.js"></script>
+<script src="js/lib/litegl.js"></script>
+<script src="js/lib/rendeer.js"></script>
+<script src="js/lib/daikon.js"></script>
+<script src="js/lib/nifti-reader.js"></script>
+
+<script src="js/volume-base.js"></script>
+<script src="js/volume-loader.js"></script>
+<script src="js/volume-mha.js"></script>
+<script src="js/tf-widget.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/gui.js"></script>
+<script src="js/core.js"></script>
+
+</html>
+
+
+
+

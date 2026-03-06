@@ -1,0 +1,177 @@
+<!-- visualizer.html -->
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="#">
+     <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style type="text/css"></style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="tabs">
+        <div id="tabcontent">
+            <div class="tabname">Cinematic rendering of cardiac volumetric data</div>
+        </div>
+    </div>
+    <div id=visualizer class="mainarea" style="width: 100%; height: calc(100vh - 40px); background-color: cornflowerblue;">
+        <div id="canvasarea" style="width: 100%; height: calc(100vh - 40px); background-color: rgb(189, 186, 155); ">
+            <div id="menubar" style="display:inherit;"></div>
+
+            <div id="GUI"> </div> 
+
+         <!-- The Modal file-->
+         <div id="myModal_file" class="modal" >
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Load data</h2>
+                </div>
+                <div class="modal-body">
+                    <p> Files: &nbsp;&nbsp;&nbsp; <input id="fileInput" type="file" multiple/>
+                        <button id="fileLoadButton" class="button-text">Load</button></p>
+                    </div>
+                    <div class="modal-footer">
+                        <p>Supported formats: .mha, .nii and .vl</p>
+                    </div>
+                </div>
+            </div>
+
+        
+             <!-- The Modal folder-->
+         <div id="myModal_folder" class="modal" >
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Load dicoms</h2>
+                </div>
+                <div class="modal-body">
+                    <p> Folder: &nbsp;&nbsp;&nbsp; <input id="folderInput" type="file"  webkitdirectory multiple/>
+                        <button id="fileLoadButtonDicom" class="button-text">Load</button></p>
+                    </div>
+                    <div class="modal-footer">
+                        <p>Supported formats: .dcm</p>
+                    </div>
+                </div>
+            </div>
+
+                <!-- The Modal seg-->
+         <div id="myModal_seg" class="modal" >
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Load segmented image</h2>
+                </div>
+                <div class="modal-body">
+                    <input id = "segmentationActive" type="checkbox" value="false"> Use segmentation<br>
+                    <input  id="maskInput" type="file"> 
+                    <button id="maskLoadButton" class="button-text"disabled>Load</button>
+                   <button id="maskUnloadButton" class="button-text">Unload</button>
+                    </div>
+                    <div class="modal-footer">
+                        <p>Supported formats: .mha</p>
+                    </div>
+                </div>
+            </div>
+
+                 <!-- The Modal volume detail -->
+         <div id="myModal_volInfo" class="modal" >
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Volume Information</h2>
+                </div>
+                <div class="modal-body">
+                   
+                </div>
+                   
+            </div>
+        </div>
+      
+        <canvas class= canvas; id="renderCanvas" style="width: 70%; height: 95%;" ></canvas>
+        <div  style="width: 60px; height: 30px; position: absolute; bottom: 4px; left: 0px; border: none; background-color: rgb(237, 243, 150);">  
+            <input id="dispFPS" type="text" style="border: hidden; background: transparent;">
+        </div>
+
+        <div  style="width: 60px; height: 30px; position: absolute; bottom: 4px; left: 100px; border: none; background-color:rgb(237, 243, 150);">  
+            <input id="loadTime" type="text" style="border: hidden; background: transparent;">
+        </div>
+
+        <div  style="width: 60px; height: 30px; position: absolute; bottom: 4px; left: 200px; border: none; background-color:rgb(237, 243, 150);">  
+            <input id="parseTime" type="text" style="border: hidden; background: transparent;">
+        </div>
+        
+        <div id="rightBar" style="float: right; width:calc(30% - 10px); height: 95%;  padding-right:9px; background-color: rgba(107, 107, 114, 0.881)">
+            <div id="leftBar" style="float: left; width: 10%; height: 100%;  background-color: rgb(0, 0, 0);">
+                <nav id="myNav" class="menu">
+
+                    <a href="#" class="menu--item" data-tooltip="reset">
+                        <i class="material-icons" title="Reset">home</i>
+                    </a>
+                    <a href="#" class="menu--item" data-tooltip="orbit">
+                        <i class="material-icons" title="Rotate">360</i>
+                    </a>
+                    <a href="#" class="menu--item" data-tooltip="zoom In">
+                        <i class="material-icons" title="zoom in">zoom_in</i>
+                    </a>
+                    <a href="#" class="menu--item" data-tooltip="zoom Out">
+                        <i class="material-icons" title="zoom out">zoom_out</i>
+                    </a>
+                    <a href="#" class="menu--item" data-tooltip="Light bulb">
+                        <i class="material-icons" title="Light position">tungsten</i>
+                    </a>
+                    <a href="#" class="menu--item" data-tooltip="Material">
+                        <i class="material-icons" title="Material editor">tune</i>
+                    </a>
+                </nav>  
+            </div>
+          
+                <div id="Lights"  style="display: none;"> </div>
+                <div id="Materials"  style="display: none;"> </div>
+                <div id="CutPlane"  style="display: none;"> </div>
+          
+            
+
+            
+                
+                <div id="TFComponents" class="main-text"></div>
+                <div id="tfeditor">
+                    <!--tfeditor creates a 2d canvas here-->
+                </div>
+            
+            <fieldset> 
+                <legend>Rendering Editor</legend>
+                <div id="renComponents" class="main-text"></div>
+             
+                
+                <div id="break"> </div>
+                
+                <fieldset> <legend>Quality</legend>
+                    <div id="uniComponents" class="main-text"></div>
+                </fieldset>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Tools</legend>
+                <div id="tools" class="main-text"></div>
+            </fieldset>
+     <!--    <div>
+            <button id="shaderReloadButton"  class="button-text" style="right: auto;" >Reload shader</button>
+        </div>-->
+
+       
+
+        </div> 
+
+    </div>
+    
+</div>
+</body>
+</html>
