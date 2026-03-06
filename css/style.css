@@ -1,1 +1,321 @@
+.mainarea {
+    vertical-align: top;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+#tabs {
+    width: 100%;
+    height: 20px;
+    z-index: 100;
+    display: flex;
+    background: #3d3d3d;
+}
+#tabcontent {
+    width: calc( 100% - 20px );
+    display: flex;
+    padding-left: 7px;
+}
+#tabcontent .tabname {
+    padding-top: 3px;
+    color: white;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+    /* width: 13px; */
+    
+}
+
+.button-text {
+    color: #051516;
+    text-align: center;
+    width:auto;
+    height: 20px;
+    vertical-align: middle;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    cursor: pointer;
+}
+.body {
+    color: #051516;
+    font-size:small; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: left;
+    line-height: 16.5px;
+    width: 100px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.p {
+    margin: 0;
+    padding: 0;
+}
+.tag{
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.main-text{
+    font-size: 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#menubar {
+    background-color: #3d3d3d; 
+    width: 100%;
+    border-bottom: 1px solid #afafaf;
+}
+.mainbar ul {
+    font-size: 14px;
+    margin: 0;
+    padding: 0px;
+    display: inline;
+}
+
+.mainbar li {
+    position: relative;
+    color: rgb(194, 193, 193);
+    display: inline-block;
+    min-width: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    user-select: none;
+    -moz-user-select: none;  
+    -webkit-user-select: none;  
+    cursor: pointer;
+}
+
+.mainbar li:hover {
+    color: #fff;
+    transition: all.2s;
+}
+
+.submenu{
+    position: absolute;
+    height: auto;
+    width: 100px;
+    background-color: rgb(134, 138, 134);
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+    padding: 1px;
+    border-bottom: 2px solid #AAF;
+    visibility: hidden;
+    transition: opacity 1.5s;
+    
+}
+.mainbar li:hover .submenu{
+visibility: visible;
+opacity: 1;
+
+}
+/* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position:absolute; /* Stay in place */
+left: 100px;
+top: 50px;
+z-index: 1; /* Sit on top */
+padding-top: 100px; /* Location of the box */
+width: 50%; /* Full width */
+height: 50%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(28, 221, 108, 0); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+position: relative;
+background-color: #f0e659;
+margin: auto;
+padding: 0;
+border: 1px solid #888;
+width: 80%;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+-webkit-animation-name: animatetop;
+-webkit-animation-duration: 0.1s;
+animation-name: animatetop;
+animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+from {top:-300px; opacity:0} 
+to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+from {top:-300px; opacity:0}
+to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+color: white;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus{
+color: #000;
+text-decoration: none;
+cursor: pointer;
+}
+
+.modal-header {
+padding: 2px 16px;
+background-color: #7f887f;
+color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+padding: 2px 16px;
+background-color: #7f887f;
+color: white;
+}
+
+.canvas{
+    padding: 0;
+    margin: auto;
+    display: block;
+    width: 1000px;
+    height: 600px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#NPRContainer , #lightingContainer, #illuminationContainer, #BRDFContainer{
+    position: absolute;
+    display: none;
+    height: auto;
+    width: calc(30% - 120px);
+    font-size: 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: rgb(141, 133, 133);
+    box-shadow: 0 0 3px rgb(0, 0, 0);
+    border-bottom: 2px solid #AAF;
+    transition: opacity 1.5s;    
+}
+table{
+    width: 100%;
+    border-collapse:collapse;
+}
+td {
+    border: 1px solid #AAF;
+    font-size: 12px;
+    padding: 0.5rem;
+    background-color: rgb(122, 122, 117);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 33%;
+    height: 10%;
+    text-align: left;
+  }
+.table-button{
+    background-color: rgb(122, 117, 117);
+    border: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    cursor: pointer;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 30%;
+    height: 5px;
+    background: #d3d3d3;
+  }
+  .slider:hover {
+    opacity: 1;
+  }
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: rgb(163, 163, 252);
+    cursor: pointer;
+  }
+  .slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: rgb(163, 163, 252);
+    cursor: pointer;
+  }
+  .spinner{
+    font-size: 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 20%;
+    height: 10px;
+    background: #d3d3d3;
+
+  }
+  .br {
+    display: block;
+    content: "";
+    margin-bottom: 1em;
+ }
+ .br1 {
+    display: block;
+    content: "";
+    margin-bottom: .3em;
+ }
+ 
+ .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    background: rgb(107, 107, 114, 0.881);
+    font-size: 16px;
+    font-family: sans-serif;
+  } 
+.menu--item {
+  margin: 10px;
+  background: rgb(107, 107, 114, 0.3);
+  border-radius: 30%;
+  text-decoration: none;
+  position: relative; /* Added for tooltip positioning */
+}
+
+.menu--item:hover {
+  background-color: rgb(163, 163, 252,0.5);
+}
+.menu--item > i {
+    color: #ccc;
+  }
+  .hidden {
+    display: none;
+  }
+
+#Lights,#Materials {
+  position:absolute;
+  top: 30%;
+  left: 49%;
+  display: none;
+  height: auto;
+  width: calc(20% - 5px);
+  padding: 10px;
+  font-size: 12px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: rgb(141, 133, 133);
+  box-shadow: 0 0 3px rgb(0, 0, 0);
+  border-bottom: 2px solid #AAF;
+  transition: opacity 1.5s;
+}
+ 
+
 
