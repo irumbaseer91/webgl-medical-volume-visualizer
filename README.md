@@ -1,9 +1,6 @@
 # webgl-medical-volume-visualizer
 Interactive WebGL viewer for medical volumetric datasets in the browser.
 
-
-# Web-based Visualization of Cardiac Volumetric Data
-
 A web application for interactive visualization of medical volumetric datasets directly in the browser.
 The system uses **WebGL 2.0** to render CT data as 3D volumes and provides tools for exploration and analysis.
 
